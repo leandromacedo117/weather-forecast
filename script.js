@@ -17,11 +17,15 @@ const windElement = document.querySelector(".wind span")
 // function 
 
 const getWeatherData = async(cityValue) =>{
-    
+    const apiWeatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&appid=${apiKey}&lang=pt_br`
+
+    const res = await fetch(apiWeatherURL)
+    const data = await res.json()
+    console.log(data)
 }
 
 const showWeatherData = (cityValue) =>{
-    
+    getWeatherData(cityValue)
 }
 
 
