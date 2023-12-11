@@ -83,8 +83,8 @@ body{
     align-items: center;
 }
 
-.details #umidity{
-    border-radius: 1px solid #fff;
+.details .umidity{
+    border-right: 1px solid #fff;
     margin: .6rem;
     padding: .6rem;
 }
