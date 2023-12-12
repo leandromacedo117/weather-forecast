@@ -35,9 +35,16 @@ const showWeatherData = async (cityValue) =>{
 
     description.innerText = data.weather[0].description 
     const icon = data.weather[0].icon
-    weatherIcon.setAttribute("src",`http://openweathermap.org/img/wn/${icon}.png"`)
-    umidityElement.textContent = parseInt(data.main.humidity) + "%"
+    weatherIcon.setAttribute(
+        'src',
+        `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
+      );
     windElement.innerText  = data.wind.speed + "Km/h"
+    umidityElement.innerText = data.main.humidity + "%"
+    countryElement.setAttribute( 'src', `https://flagsapi.com/${data.sys.country}/flat/32.png`)
+
+    const weatherData = document.querySelector("#data-weather")
+    weatherData.classList.remove("hide")
 
 }
 
@@ -48,4 +55,11 @@ searchButton.addEventListener("click", (e) =>{
     const cityValue = inputCity.value
     showWeatherData(cityValue)
     
+})
+
+inputCity.addEventListener("keyup" , (e) =>{
+    if(e.code === "Enter"){
+        const cityValue = e.target.value
+        showWeatherData(cityValue)
+    }
 })
